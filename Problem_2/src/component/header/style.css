@@ -1,0 +1,19 @@
+.header {
+  padding-top: 25px;
+}
+.header .container .logo {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  color: white;
+  text-shadow: 2px 3px 0px #898999;
+}
+
+.logo .logo-highlight {
+  display: inline-block;
+  background-color: #19b8a2;
+  border-radius: 10px;
+  width: 65px;
+  text-align: center;
+  color: #f9f871;
+}

@@ -1,0 +1,25 @@
+* {
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(
+    to bottom,
+
+    #0400ffbe 0%,
+
+    #5c3995 100%
+  );
+  font-family: "Lato", sans-serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.425);
+  z-index: 0;
+}

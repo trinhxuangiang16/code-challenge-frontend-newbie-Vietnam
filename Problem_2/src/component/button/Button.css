@@ -1,0 +1,48 @@
+.button-form {
+  width: auto;
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  color: white;
+  text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.7);
+  background: linear-gradient(
+    135deg,
+    #00c9a8,
+    #19b8a2,
+    #0091c1,
+    #00a6b3,
+    #0079c3
+  );
+  background-size: 300% 300%;
+  background-position: 0% 50%;
+
+  box-shadow: 0 4px 10px rgba(49, 49, 49, 0.5);
+
+  transition: transform 0.5s ease;
+}
+
+.button-Lg {
+  padding: 12px 25px;
+  font-weight: 500;
+}
+.button-Sm {
+  padding: 8px;
+  margin-top: 25px;
+}
+.button-Sm:active svg {
+  filter: drop-shadow(0 2px 3px #ff7474);
+}
+.button-form:hover {
+  animation: hoverGradient 0.5s forwards;
+  filter: drop-shadow(0 2px 3px #00c9a8);
+}
+/* HIỆU ỨNG KHI NHẤN (ACTIVE) */
+.button-form:active {
+  animation: none;
+  color: #f9f871;
+  text-shadow: 0px 0px 5px rgba(68, 68, 68, 0.7);
+  box-shadow: 0 3px 0 0 #6bb9b5, inset 0 0 5px rgba(0, 0, 0, 0.5);
+}

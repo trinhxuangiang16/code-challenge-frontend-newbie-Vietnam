@@ -1,0 +1,125 @@
+.form-convert {
+  width: fit-content;
+  margin: 7vh auto 0 auto;
+}
+.form-convert .container {
+  /* max-width: 900px; */
+  width: 800px;
+  background-color: #0091c156;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.274) 2px 5px 10px 5px;
+  padding: 40px;
+  font-size: 20px;
+}
+.container .form-wrap .form-title {
+  text-align: center;
+  color: #ffffff;
+}
+
+.form-title h2 {
+  margin: 0;
+  font-weight: 700;
+}
+.form-title p {
+  color: #00c9a8;
+  font-weight: 700;
+}
+
+/* form content */
+.form-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 35px;
+}
+
+.form-content .input-currency label {
+  color: #ebebeba9;
+  font-size: 19px;
+  display: block;
+  font-weight: 500;
+}
+
+.form-content .input-currency .inline-input {
+  background-color: white;
+  height: 45px;
+  width: 550px;
+  border-radius: 10px;
+  border: #00c9a8 2px solid;
+  padding: 5px 0 5px 15px;
+}
+.inline-input input,
+.inline-input select,
+.inline-input span {
+  border: none;
+  height: 30px;
+  color: #707070d8;
+  font-size: 18px;
+}
+.inline-input input {
+  border: none;
+  outline-color: transparent;
+  width: 70%;
+  color: rgba(0, 0, 0, 0.541);
+  font-weight: 700;
+}
+.inline-input select {
+  width: 14%;
+  outline-color: transparent;
+}
+
+.inline-input span {
+  width: 12%;
+  height: 70%;
+}
+
+/* KEYFRAMES CHO HOẠT ẢNH CHUYỂN MÀU (GIỮ NGUYÊN) */
+@keyframes hoverGradient {
+  from {
+    background-position: 0% 100%;
+  }
+  to {
+    background-position: 100% 0;
+  }
+}
+/* 
+.exchange {
+  width: auto;
+  border-radius: 15px;
+  margin-top: 25px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(
+    135deg,
+    #00c9a8,
+    #19b8a2,
+    #0091c1,
+    #00a6b3,
+    #0079c3
+  );
+  background-size: 300% 300%;
+  background-position: 0% 50%;
+
+  box-shadow: 0 4px 10px rgba(49, 49, 49, 0.5);
+
+  transition: transform 0.5s ease;
+}
+
+.button-form:hover,
+.exchange:hover {
+  animation: hoverGradient 0.5s forwards;
+  filter: drop-shadow(0 2px 3px #00c9a8);
+}
+
+.exchange:active {
+  color: #f9f871;
+}
+
+.exchange:active svg {
+  filter: drop-shadow(0 2px 3px #ff7474);
+} */
