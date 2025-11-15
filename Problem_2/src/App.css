@@ -17,3 +17,15 @@ body::before {
   background: rgba(0, 0, 0, 0.546);
   z-index: 0;
 }
+
+@media (max-width: 600px) {
+  body {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+}

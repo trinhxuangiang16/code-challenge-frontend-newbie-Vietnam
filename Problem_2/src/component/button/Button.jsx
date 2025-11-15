@@ -1,14 +1,26 @@
 import "./Button.css";
-export default function Button({ size, handlerConvert, children }) {
+export default function Button({ size, handlerConvert, children, isLoading }) {
   return (
     <button
       onClick={() => {
         handlerConvert();
       }}
-      className={`button-form button-${size}`}
       type="button"
+      className={`btn button-form button-${size}`}
+      disabled={isLoading}
     >
-      {children}
+      {isLoading ? (
+        <>
+          <span
+            className="spinner-border spinner-border-sm"
+            role="status"
+            aria-hidden="true"
+          />
+          <span className="btn-loading">Loading...</span>
+        </>
+      ) : (
+        children
+      )}
     </button>
   );
 }

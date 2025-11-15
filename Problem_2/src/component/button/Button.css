@@ -39,7 +39,7 @@
 }
 .button-Sm {
   padding: 8px;
-  margin-top: 25px;
+  margin-top: 10px;
 }
 .button-Sm:active svg {
   filter: drop-shadow(0 2px 3px #ff7474);
@@ -47,6 +47,7 @@
 .button-form:hover {
   animation: hoverGradient 1s infinite;
   filter: drop-shadow(0 2px 3px #00c9a8);
+  color: rgb(192, 204, 255);
 }
 /* HIỆU ỨNG KHI NHẤN (ACTIVE) */
 .button-form:active {
@@ -54,4 +55,54 @@
   color: #f9f871;
   text-shadow: 0px 0px 5px rgba(68, 68, 68, 0.7);
   box-shadow: 0 3px 0 0 #6bb9b5, inset 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.btn-loading {
+  margin-left: 5px;
+}
+
+@media (max-width: 600px) {
+  .button-form {
+    font-size: 22px;
+    padding: 14px 30px;
+    border-radius: 18px;
+    box-shadow: 0 5px 12px rgba(49, 49, 49, 0.5);
+  }
+
+  .button-Lg {
+    padding: 16px 32px;
+    font-weight: 600;
+  }
+
+  .button-Sm {
+    padding: 10px 12px;
+    margin-top: 10px;
+  }
+
+  .button-form:hover {
+    filter: drop-shadow(0 3px 4px #00c9a8);
+  }
+}
+
+@media (max-width: 480px) {
+  .button-form {
+    font-size: 20px;
+    padding: 12px 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(49, 49, 49, 0.5);
+  }
+
+  .button-Lg {
+    padding: 14px 28px;
+    font-weight: 500;
+  }
+
+  .button-Sm {
+    padding: 8px 10px;
+    margin-top: 8px;
+  }
+
+  .button-form:hover {
+    filter: drop-shadow(0 2px 3px #00c9a8);
+  }
 }

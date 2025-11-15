@@ -3,8 +3,7 @@
   margin: 7vh auto 0 auto;
 }
 .form-convert .container {
-  /* max-width: 900px; */
-  width: 800px;
+  width: 650px;
   background-color: #0091c156;
   border-radius: 15px;
   box-shadow: rgba(0, 0, 0, 0.274) 2px 5px 10px 5px;
@@ -17,12 +16,14 @@
 }
 
 .form-title h2 {
+  font-size: 28px;
   margin: 0;
   font-weight: 700;
 }
 .form-title p {
   color: #40edd0;
   font-weight: 700;
+  font-size: 18px;
 }
 
 /* form content */
@@ -41,35 +42,147 @@
 }
 
 .form-content .input-currency .inline-input {
-  background-color: rgb(238, 254, 255);
+  background-color: white;
   height: 45px;
-  width: 550px;
+  width: 520px;
   border-radius: 10px;
   border: #00c9a8 2px solid;
   padding: 5px 0 5px 15px;
 }
 .inline-input input,
-.inline-input #currency-select,
-.inline-input span {
+.inline-input #currency-select {
   border: none;
   height: 30px;
   color: #707070d8;
   font-size: 18px;
-  background-color: rgb(238, 254, 255);
+  background-color: white;
 }
 .inline-input input {
   border: none;
-  outline-color: transparent;
+  outline-color: white;
   width: 70%;
   color: rgba(0, 0, 0, 0.541);
   font-weight: 700;
 }
-.inline-input #currency-select {
+.inline-input .select-country {
   width: 14%;
-  outline-color: transparent;
+  outline-color: white;
 }
 
-.inline-input span {
-  width: 12%;
-  height: 70%;
+.inline-input .select-widden {
+  margin-left: 5%;
+  width: 20%;
+  outline-color: white;
+}
+
+.error {
+  height: 14px;
+  color: rgb(255, 78, 78);
+  font-size: 15px;
+  font-style: italic;
+}
+
+#flag-display {
+  position: relative;
+  border-radius: 2px;
+  margin-left: 15px;
+  top: 2.5px;
+  font-size: 25px;
+  background-size: cover;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 600px) {
+  .form-convert {
+    margin: 6vh auto 0 auto;
+  }
+
+  .form-convert .container {
+    width: 570px;
+    padding: 35px;
+    font-size: 19px;
+  }
+
+  .form-title h2 {
+    font-size: 26px;
+  }
+
+  .form-title p {
+    font-size: 17px;
+  }
+
+  .form-content .input-currency .inline-input {
+    width: 380px;
+    height: 42px;
+  }
+
+  .inline-input input,
+  .inline-input #currency-select {
+    font-size: 17px;
+    height: 28px;
+  }
+
+  .inline-input input {
+    width: 68%;
+  }
+
+  .inline-input .select-country {
+    width: 15%;
+  }
+
+  .inline-input .select-widden {
+    width: 21%;
+    margin-left: 5%;
+  }
+
+  #flag-display {
+    font-size: 24px;
+  }
+}
+@media (max-width: 480px) {
+  .form-convert {
+    margin: 5vh auto 0 auto;
+  }
+
+  .form-convert .container {
+    width: 470px;
+    padding: 30px;
+    font-size: 18px;
+  }
+
+  .form-title h2 {
+    font-size: 24px;
+  }
+
+  .form-title p {
+    font-size: 16px;
+  }
+
+  .form-content .input-currency .inline-input {
+    width: 450px;
+    height: 40px;
+  }
+
+  .inline-input input,
+  .inline-input #currency-select {
+    font-size: 16px;
+    height: 26px;
+  }
+
+  .inline-input input {
+    width: 65%;
+  }
+
+  .inline-input .select-country {
+    width: 16%;
+  }
+
+  .inline-input .select-widden {
+    width: 22%;
+    margin-left: 5%;
+  }
+
+  #flag-display {
+    font-size: 22px;
+  }
 }

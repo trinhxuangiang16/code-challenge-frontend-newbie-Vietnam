@@ -3,16 +3,13 @@ import { getConvert } from "./currencyConvertActionThunk";
 
 const initialState = {
   currency: [],
-  isLoading: false,
+  isLoading: { action: false, button: false },
   amountState: {},
   toCurrency: {},
-  bothWayMoney: {
-    moneyA: "",
-    moneyB: "",
-  },
   result: 0,
   error: null,
 };
+
 const currencySlice = createSlice({
   name: "currencyConvert",
   initialState,
@@ -23,7 +20,6 @@ const currencySlice = createSlice({
       );
       console.log("Selected:", action.payload);
       state.amountState = amount || {};
-      state.bothWayMoney.moneyA = amount || "";
     },
     getToCurrencyAction: (state, action) => {
       const currency = state.currency.find(
@@ -31,7 +27,6 @@ const currencySlice = createSlice({
       );
       console.log("Selected:", action.payload);
       state.toCurrency = currency || {};
-      state.bothWayMoney.moneyB = currency || "";
     },
     getCurrentResultAction: (state, action) => {
       state.result = action.payload;
@@ -40,23 +35,25 @@ const currencySlice = createSlice({
       const tempAmount = state.amountState;
       state.amountState = state.toCurrency;
       state.toCurrency = tempAmount;
-
-      // let A = state.bothWayMoney.moneyB;
-      // let B = state.bothWayMoney.moneyA;
-      // state.bothWayMoney = { moneyA: A, moneyB: B };
+    },
+    setIsLoadingAction: (state, action) => {
+      state.isLoading.button = action.payload;
+    },
+    hasErrorAction: (state, action) => {
+      state.error = action.payload;
     },
   },
   extraReducers: (builder) => {
     builder
       .addCase(getConvert.pending, (state) => {
-        state.isLoading = true;
+        state.isLoading.action = true;
       })
       .addCase(getConvert.fulfilled, (state, action) => {
         state.currency = action.payload;
-        state.isLoading = false;
+        state.isLoading.action = false;
       })
       .addCase(getConvert.rejected, (state, action) => {
-        state.isLoading = false;
+        state.isLoading.action = false;
       });
   },
 });
@@ -70,4 +67,6 @@ export const {
   getToCurrencyAction,
   getCurrentResultAction,
   reverseTheWayToChange,
+  setIsLoadingAction,
+  hasErrorAction,
 } = currencySlice.actions;
