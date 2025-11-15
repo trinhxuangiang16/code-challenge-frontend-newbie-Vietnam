@@ -1,13 +1,12 @@
 import { createRoot } from "react-dom/client";
-
 import App from "./App.jsx";
 import { configureStore } from "@reduxjs/toolkit";
-import { currencySlice } from "./component/redux/currencySlice.js";
 import { Provider } from "react-redux";
+import currencySlice from "./component/redux/currencySlice";
 
 const reduxStore = configureStore({
   reducer: {
-    currencySlice: currencySlice,
+    currencyStore: currencySlice,
   },
 });
 

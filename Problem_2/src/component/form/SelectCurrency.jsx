@@ -1,10 +1,23 @@
-export default function SelectCurrency({ Ref }) {
+import { useSelector } from "react-redux";
+
+export default function SelectCurrency({ handleSelect, selected }) {
+  const dataMoney = useSelector((state) => state.currencyStore.currency);
+
   return (
-    <select ref={Ref} id="currency-select" name="amount-country">
+    <select
+      onChange={handleSelect}
+      value={selected || ""}
+      id="currency-select"
+      name="amount-country"
+    >
       <option value="Select">Select</option>
-      <option value="USD">USD</option>
-      <option value="EUR">EUR</option>
-      <option value="VND">VND</option>
+      {dataMoney?.map((item) => {
+        return (
+          <option key={item.id} value={item.currency_code}>
+            {item.currency_code}
+          </option>
+        );
+      })}
     </select>
   );
 }

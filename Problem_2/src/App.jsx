@@ -1,21 +1,20 @@
 import { useDispatch } from "react-redux";
 import "./App.css";
-import FormConvert from "./component/form/FormConvert";
 import Header from "./component/header/Header";
 import { getConvert } from "./component/redux/currencyConvertActionThunk";
+import { useEffect } from "react";
+import FormConvert from "./component/form/FormConvert";
 
 function App() {
   const dispatch = useDispatch();
 
-  const handleFetch = () => {
+  useEffect(() => {
     dispatch(getConvert());
-  };
-
+  }, []);
   return (
     <div>
       <Header />
       <FormConvert />
-      <button onClick={handleFetch}>Fetch</button>
     </div>
   );
 }
