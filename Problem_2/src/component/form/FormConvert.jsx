@@ -3,7 +3,7 @@ import SelectCurrency from "./SelectCurrency";
 import { icon } from "../../assets/svg";
 import "./style.css";
 import Input from "./Input";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getAmountAction,
@@ -12,6 +12,7 @@ import {
   reverseTheWayToChange,
   setIsLoadingAction,
   hasErrorAction,
+  setTypeCurency,
 } from "../redux/currencySlice";
 import {
   handleValidateChooseType,
@@ -19,20 +20,21 @@ import {
 } from "../../util/validation";
 
 export default function FormConvert() {
-  //State use for render exchange rates
-  const [isA, setIsA] = useState(false);
-  const [isB, setIsB] = useState(false);
-
   //State manage type od currency in input (A) / output (B)
   const dataMoneyA =
     useSelector((state) => state.currencyStore.amountState) || {};
   const dataMoneyB =
     useSelector((state) => state.currencyStore.toCurrency) || {};
 
+  const isA =
+    useSelector((state) => state.currencyStore.isLoading.isTypeA) || false;
+  const isB =
+    useSelector((state) => state.currencyStore.isLoading.isTypeB) || false;
+
   //The result after convert
   const result = useSelector((state) => state.currencyStore.result) || 0;
 
-  // Error
+  //Error
   const err = useSelector((state) => state.currencyStore.error);
 
   //State isLoading.button in redux store
@@ -51,14 +53,14 @@ export default function FormConvert() {
   const handleAmountChange = (e) => {
     const value = e.target.value;
     dispatch(getAmountAction(value));
-    setIsA(true);
+
+    if (!isA) dispatch(setTypeCurency("typeA"));
   };
 
-  //get type of currency in output affer choose option in SelectCurrency component
   const handleToCurrencyChange = (e) => {
     const value = e.target.value;
     dispatch(getToCurrencyAction(value));
-    setIsB(true);
+    if (!isB) dispatch(setTypeCurency("typeB"));
   };
 
   //Convert currency
@@ -67,6 +69,7 @@ export default function FormConvert() {
       dispatch(
         hasErrorAction("Please enter a positive integer greater than 0!")
       );
+      console.log("innnn");
       return;
     }
 
@@ -79,7 +82,11 @@ export default function FormConvert() {
       );
       return;
     }
-    dispatch(hasErrorAction(null));
+
+    if (err) {
+      dispatch(hasErrorAction(null));
+    }
+
     let moneyB = 0;
     let moneyA = Number(amountRef.current.value) || 0;
     if (dataMoneyA?.exchange_rate_usd && dataMoneyB?.exchange_rate_usd) {

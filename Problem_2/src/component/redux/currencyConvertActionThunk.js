@@ -7,7 +7,13 @@ export const getConvert = createAsyncThunk(
     {
       try {
         const result = await axios.get(
-          "https://6916f6b3a7a34288a27f0bcc.mockapi.io/data"
+          "https://6916f6b3a7a34288a27f0bcc.mockapi.io/data",
+          {
+            headers: {
+              "Cache-Control": "no-cache",
+              Pragma: "no-cache",
+            },
+          }
         );
 
         return result.data;

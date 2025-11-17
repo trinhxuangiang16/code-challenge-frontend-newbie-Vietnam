@@ -3,7 +3,7 @@ import { getConvert } from "./currencyConvertActionThunk";
 
 const initialState = {
   currency: [],
-  isLoading: { action: false, button: false },
+  isLoading: { action: false, button: false, isTypeA: false, isTypeB: false },
   amountState: {},
   toCurrency: {},
   result: 0,
@@ -42,6 +42,14 @@ const currencySlice = createSlice({
     hasErrorAction: (state, action) => {
       state.error = action.payload;
     },
+    setTypeCurency: (state, action) => {
+      if (action.payload == "typeA") {
+        state.isLoading.isTypeA = true;
+      } 
+      if(action.payload === "typeB") {
+        state.isLoading.isTypeB = true;
+      }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -69,4 +77,5 @@ export const {
   reverseTheWayToChange,
   setIsLoadingAction,
   hasErrorAction,
+  setTypeCurency,
 } = currencySlice.actions;
