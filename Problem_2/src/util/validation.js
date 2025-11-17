@@ -1,3 +1,4 @@
+//Validate when you converet currency
 export const handleValidateInput = (value) => {
   const regex = /^[1-9]\d*$/;
   let isPass = regex.test(value);

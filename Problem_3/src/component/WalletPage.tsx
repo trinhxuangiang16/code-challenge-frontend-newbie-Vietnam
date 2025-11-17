@@ -77,10 +77,6 @@ const WalletPage = ({ children, ...rest }: Props) => {
   }, [sortedBalances]);
   //Add  sortedBalances dependency
 
-  const style = {
-    size: "30px",
-  };
-
   const rows = useMemo(
     () =>
       //use formattedBalances and balance.formatted
@@ -90,9 +86,9 @@ const WalletPage = ({ children, ...rest }: Props) => {
 
         return (
           <WalletRow
-            style={style.size}
-            key={`${balance.blockchain}-${balance.currency}`}
-            //replaced index-based keys with a stable key blockchain và currency
+            style="30px"
+            key={`${balance.currency}`}
+            //replaced index-based keys with a stable key currency
             amount={balance.amount}
             usdValue={usdValue}
             formattedAmount={balance.formatted}

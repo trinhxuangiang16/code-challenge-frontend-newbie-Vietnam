@@ -1,3 +1,4 @@
+/* default screen from 600px and up */
 @keyframes hoverGradient {
   from {
     background-position: 0% 100%;
@@ -39,7 +40,7 @@
 }
 .button-Sm {
   padding: 8px;
-  margin-top: 10px;
+  /* margin-top: 10px; */
 }
 .button-Sm:active svg {
   filter: drop-shadow(0 2px 3px #ff7474);
@@ -49,7 +50,7 @@
   filter: drop-shadow(0 2px 3px #00c9a8);
   color: rgb(192, 204, 255);
 }
-/* HIỆU ỨNG KHI NHẤN (ACTIVE) */
+
 .button-form:active {
   animation: none;
   color: #f9f871;
@@ -61,6 +62,7 @@
   margin-left: 5px;
 }
 
+/* default screen from 480px and 600px */
 @media (max-width: 600px) {
   .button-form {
     font-size: 22px;
@@ -84,6 +86,7 @@
   }
 }
 
+/* default screen max 480px  */
 @media (max-width: 480px) {
   .button-form {
     font-size: 20px;

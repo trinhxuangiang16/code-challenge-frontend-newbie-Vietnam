@@ -1,9 +1,11 @@
 import Button from "../button/Button";
-import SelectCurrency from "./SelectCurrency";
 import { icon } from "../../assets/svg";
-import "./style.css";
 import Input from "./Input";
+import SelectCurrency from "./SelectCurrency";
+
+import "./style.css";
 import { useRef } from "react";
+
 import { useDispatch, useSelector } from "react-redux";
 import {
   getAmountAction,
@@ -19,13 +21,15 @@ import {
   handleValidateInput,
 } from "../../util/validation";
 
+//Main component
 export default function FormConvert() {
-  //State manage type od currency in input (A) / output (B)
+  //State manage type of currency in input (A) / output (B)
   const dataMoneyA =
     useSelector((state) => state.currencyStore.amountState) || {};
   const dataMoneyB =
     useSelector((state) => state.currencyStore.toCurrency) || {};
 
+  //use this state to render exchange_rate
   const isA =
     useSelector((state) => state.currencyStore.isLoading.isTypeA) || false;
   const isB =
@@ -49,7 +53,7 @@ export default function FormConvert() {
 
   const dispatch = useDispatch();
 
-  //get type of currency in input affer choose option in SelectCurrency component
+  //get type of currency in input affer choose option in SelectCurrency component in A
   const handleAmountChange = (e) => {
     const value = e.target.value;
     dispatch(getAmountAction(value));
@@ -57,6 +61,7 @@ export default function FormConvert() {
     if (!isA) dispatch(setTypeCurency("typeA"));
   };
 
+  //get type of currency in input affer choose option in SelectCurrency component in B
   const handleToCurrencyChange = (e) => {
     const value = e.target.value;
     dispatch(getToCurrencyAction(value));
@@ -65,14 +70,17 @@ export default function FormConvert() {
 
   //Convert currency
   let handlerConvertCurrency = async () => {
+    //Validate if there is an error then render
     if (!handleValidateInput(amountRef.current.value)) {
+      //if is a letter, negative number or special characters  -> false -> run action
       dispatch(
         hasErrorAction("Please enter a positive integer greater than 0!")
       );
-      console.log("innnn");
+
       return;
     }
 
+    //if dont choose both od tye currency -> false -> run action
     if (
       !handleValidateChooseType(dataMoneyA.exchange_rate_usd) ||
       !handleValidateChooseType(dataMoneyB.exchange_rate_usd)
@@ -83,10 +91,12 @@ export default function FormConvert() {
       return;
     }
 
+    //If the code runs to here and redux also have error then remove the error
     if (err) {
       dispatch(hasErrorAction(null));
     }
 
+    //Calculate conversion money
     let moneyB = 0;
     let moneyA = Number(amountRef.current.value) || 0;
     if (dataMoneyA?.exchange_rate_usd && dataMoneyB?.exchange_rate_usd) {
@@ -96,7 +106,7 @@ export default function FormConvert() {
           Number(dataMoneyA.exchange_rate_usd));
     }
 
-    //Create loading effect
+    //Create loading effect 2s
     dispatch(setIsLoadingAction(true));
     await new Promise((resolve) => setTimeout(resolve, 2000));
     dispatch(setIsLoadingAction(false));
@@ -117,14 +127,17 @@ export default function FormConvert() {
           <div className="form-title">
             <h2>Real-time exchange rates at your fingertips.</h2>
             {isA && isB && (
-              <p>
-                Currency exchange rate: 1 {`${dataMoneyA.currency_code}`} =
-                {"  "}
-                {(
-                  Number(dataMoneyB.exchange_rate_usd) /
-                  Number(dataMoneyA.exchange_rate_usd)
-                ).toFixed(6)}
-                {`  ${dataMoneyB.currency_code}`}
+              <p classNam="exchange-rate">
+                Currency exchange rate: 1{" "}
+                <span>{`${dataMoneyA.currency_code}`}</span> ={"  "}
+                <span>
+                  {" "}
+                  {(
+                    Number(dataMoneyB.exchange_rate_usd) /
+                    Number(dataMoneyA.exchange_rate_usd)
+                  ).toFixed(6)}
+                </span>{" "}
+                <span>{`  ${dataMoneyB.currency_code}`}</span>
               </p>
             )}
           </div>

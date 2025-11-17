@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 
+//Component SelectCurrency use in this project
 export default function SelectCurrency({ handleSelect, selected, iso }) {
   const dataMoney = useSelector((state) => state.currencyStore.currency);
 
@@ -7,6 +8,7 @@ export default function SelectCurrency({ handleSelect, selected, iso }) {
   return (
     <>
       <select
+        //function to store the data when choose option
         onChange={handleSelect}
         value={selected || ""}
         id="currency-select"
@@ -22,6 +24,8 @@ export default function SelectCurrency({ handleSelect, selected, iso }) {
           );
         })}
       </select>
+
+      {/* Create flag icon based on country ISO code */}
       {isSelected && <i id="flag-display" className={`fi fi-${iso}`} />}
     </>
   );

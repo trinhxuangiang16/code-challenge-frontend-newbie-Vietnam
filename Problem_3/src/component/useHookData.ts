@@ -1,6 +1,5 @@
 import type { WalletBalance } from "./WalletPage";
 
-
 //data used for testing
 export const useWalletBalances = (): WalletBalance[] => {
   return [

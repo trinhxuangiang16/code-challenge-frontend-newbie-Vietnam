@@ -1,5 +1,4 @@
 //The sample code with errors or the somthing i think it not good
-
 interface WalletBalance {
   currency: string;
   amount: number;
